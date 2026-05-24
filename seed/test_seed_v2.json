@@ -7,8 +7,8 @@
     "license_tier": "testing",
     "requires_entitlement": false,
     "compatible_app_major_versions": [2],
-    "data_version": "v2-test-20260524.1",
-    "rules_version": "v2-test-rules-20260524.1",
+    "data_version": "v2-test-20260524.2",
+    "rules_version": "v2-test-rules-20260524.2",
     "package_format": "sqlite3+gzip"
   },
   "source_registry": [
@@ -28,6 +28,24 @@
       "version_label": "public-web",
       "license_note": "Public source description only; underlying interaction rows require license and redistribution review before activation.",
       "source_type": "HERB_WESTERN_SOURCE_CANDIDATE",
+      "checksum": null
+    },
+    {
+      "source_id": "mohw_docmap_cmthp_integrated_query",
+      "source_name": "衛生福利部中醫藥司臺灣中藥典及中西藥併用查詢系統",
+      "source_url": "https://dep.mohw.gov.tw/DOCMAP/cp-759-54182-108.html",
+      "version_label": "updated-2024-01-19",
+      "license_note": "Official query-system entry page only; row-level redistribution requires license and usage review.",
+      "source_type": "HERB_WESTERN_OFFICIAL_QUERY_PORTAL",
+      "checksum": null
+    },
+    {
+      "source_id": "mohw_nhia_medicloud_danshen_aspirin_notice",
+      "source_name": "衛生福利部健保醫療雲端查詢系統中西藥交互作用提示公開說明",
+      "source_url": "https://www.mohw.gov.tw/fp-16-57049-1.html",
+      "version_label": "2020-12-04",
+      "license_note": "Public official example and safety context only; not a complete interaction dataset.",
+      "source_type": "HERB_WESTERN_PUBLIC_EXAMPLE",
       "checksum": null
     },
     {
@@ -138,6 +156,7 @@
   ],
   "herb_western_candidate_rules": [
     {"candidate_id": "cand_danshen_warfarin", "herb_id": "herb_danshen", "western_target_type": "INGREDIENT", "western_target_id": "ing_warfarin", "concern": "出血或抗凝血作用改變", "mechanism": "candidate anticoagulant or pharmacodynamic interaction", "suggested_runtime_status": "BLUE", "candidate_status": "SOURCE_AND_LICENSE_REVIEW_REQUIRED"},
+    {"candidate_id": "cand_danshen_aspirin", "herb_id": "herb_danshen", "western_target_type": "INGREDIENT", "western_target_id": "ing_aspirin", "concern": "出血風險可能增加", "mechanism": "official public example notes potential enhancement of anticoagulant effect; candidate-only pending row-level evidence review", "suggested_runtime_status": "BLUE", "candidate_status": "SOURCE_AND_LICENSE_REVIEW_REQUIRED"},
     {"candidate_id": "cand_ginkgo_anticoagulant", "herb_id": "herb_ginkgo", "western_target_type": "CLASS", "western_target_id": "cls_anticoagulant", "concern": "出血風險可能增加", "mechanism": "candidate bleeding-risk interaction", "suggested_runtime_status": "BLUE", "candidate_status": "SOURCE_AND_LICENSE_REVIEW_REQUIRED"},
     {"candidate_id": "cand_garlic_antiplatelet", "herb_id": "herb_garlic", "western_target_type": "CLASS", "western_target_id": "cls_antiplatelet", "concern": "出血風險可能增加", "mechanism": "candidate antiplatelet/bleeding interaction", "suggested_runtime_status": "BLUE", "candidate_status": "SOURCE_AND_LICENSE_REVIEW_REQUIRED"},
     {"candidate_id": "cand_ginseng_warfarin", "herb_id": "herb_ginseng", "western_target_type": "INGREDIENT", "western_target_id": "ing_warfarin", "concern": "抗凝血控制可能改變", "mechanism": "candidate pharmacodynamic or INR-control interaction", "suggested_runtime_status": "BLUE", "candidate_status": "SOURCE_AND_LICENSE_REVIEW_REQUIRED"},

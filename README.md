@@ -63,6 +63,8 @@ compatible_app_major_versions: [2]
 目前登錄的公開來源入口：
 
 - 衛生福利部中西藥併用諮詢資料庫公開說明
+- 衛生福利部中醫藥司臺灣中藥典及中西藥併用查詢系統入口
+- 衛生福利部健保醫療雲端查詢系統中西藥交互作用提示公開說明
 - 中西藥交互作用資訊網
 - 奇美藥劑部中西藥交互作用查詢系統
 
@@ -100,9 +102,9 @@ Builder 會拒絕產生不合格資料包：
 V2 iOS 預設 manifest URL 使用 GitHub `releases/latest`。若要讓 App 直接抓測試資料包，測試 release 需要是 latest 可見的 release。
 
 ```bash
-gh release create v2-test-20260524.1 \
+gh release create v2-test-20260524.2 \
   dist/manifest.json \
   dist/safemed-mobile-safety-v2-test.sqlite3.gz \
-  --title "SafeMed V2 test data package v2-test-20260524.1" \
+  --title "SafeMed V2 test data package v2-test-20260524.2" \
   --notes "V2 test package for locked safety regression and iOS package integration."
 ```

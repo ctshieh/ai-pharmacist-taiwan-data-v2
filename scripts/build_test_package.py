@@ -384,6 +384,11 @@ def class_rule_pairs(rule: dict[str, Any]) -> list[tuple[str, str]]:
 
 
 def insert_herb_candidates(db: sqlite3.Connection, seed: dict[str, Any]) -> None:
+    source_ids = [
+        item["source_id"]
+        for item in seed["source_registry"]
+        if item["source_type"].startswith("HERB_WESTERN_")
+    ]
     for herb in seed["herbs"]:
         db.execute(
             """
@@ -399,11 +404,7 @@ def insert_herb_candidates(db: sqlite3.Connection, seed: dict[str, Any]) -> None
                 herb.get("pinyin_name"),
                 normalize(herb["display_name"]),
                 json_text(herb.get("synonyms", [])),
-                json_text([
-                    "mohw_herb_western_database_announcement",
-                    "cmuh_dhi_info",
-                    "chimei_cdi_system",
-                ]),
+                json_text(source_ids),
                 "SOURCE_REGISTRY_ONLY",
                 "PARTIAL",
             ),
@@ -431,11 +432,7 @@ def insert_herb_candidates(db: sqlite3.Connection, seed: dict[str, Any]) -> None
                 "DO_NOT_ACTIVATE_UNTIL_LICENSE_SOURCE_AND_PHARMACIST_REVIEW_PASS",
                 "此為中西藥候選資料，尚未啟用為正式提醒。",
                 "請保留中藥與西藥藥袋，詢問醫師或藥師確認；請勿自行停藥。",
-                json_text([
-                    "mohw_herb_western_database_announcement",
-                    "cmuh_dhi_info",
-                    "chimei_cdi_system",
-                ]),
+                json_text(candidate.get("source_ids", source_ids)),
                 "CANDIDATE_ONLY",
                 "Seeded for feasibility testing only; not used by mobile runtime.",
             ),
