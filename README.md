@@ -36,6 +36,7 @@ compatible_app_major_versions: [2]
 測試資料已涵蓋：
 
 - Warfarin 重複成分
+- Warfarin therapeutic duplicate rule row
 - Warfarin + NSAID
 - Digoxin / Lanoxin / 隆我心 + Amiodarone / Cordarone / 臟得樂
 - Anticoagulant + antiplatelet
@@ -82,6 +83,24 @@ dist/safemed-mobile-safety-v2-test.sqlite3
 dist/safemed-mobile-safety-v2-test.sqlite3.gz
 ```
 
+## 驗證測試資料包
+
+```bash
+python3 scripts/validate_test_package.py
+```
+
+Validator 會檢查：
+
+- manifest schema、major version、package format、checksum
+- SQLite integrity
+- drug ingredient、class membership、compact index 是否缺漏
+- RED / ORANGE rule 是否有來源
+- therapeutic duplicate rule 是否存在
+- TMP-SMX 是否展開成 Trimethoprim + Sulfamethoxazole
+- 衛福部中西藥來源入口是否存在
+- 中西藥候選是否維持非 ACTIVE
+- locked regression cases 是否得到預期顏色與 rule hit
+
 `dist/` 不進 git。正式測試時，請把 `manifest.json` 與 gzip SQLite 上傳到 GitHub Release，讓 iOS 透過 releases/latest URL 下載。
 
 ## Builder 品質檢查
@@ -102,9 +121,9 @@ Builder 會拒絕產生不合格資料包：
 V2 iOS 預設 manifest URL 使用 GitHub `releases/latest`。若要讓 App 直接抓測試資料包，測試 release 需要是 latest 可見的 release。
 
 ```bash
-gh release create v2-test-20260524.2 \
+gh release create v2-test-20260524.3 \
   dist/manifest.json \
   dist/safemed-mobile-safety-v2-test.sqlite3.gz \
-  --title "SafeMed V2 test data package v2-test-20260524.2" \
+  --title "SafeMed V2 test data package v2-test-20260524.3" \
   --notes "V2 test package for locked safety regression and iOS package integration."
 ```

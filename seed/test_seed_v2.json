@@ -7,8 +7,8 @@
     "license_tier": "testing",
     "requires_entitlement": false,
     "compatible_app_major_versions": [2],
-    "data_version": "v2-test-20260524.2",
-    "rules_version": "v2-test-rules-20260524.2",
+    "data_version": "v2-test-20260524.3",
+    "rules_version": "v2-test-rules-20260524.3",
     "package_format": "sqlite3+gzip"
   },
   "source_registry": [
@@ -136,6 +136,7 @@
     {"drug_id": "drug_acetaminophen", "display_name": "Acetaminophen", "generic_name": "Acetaminophen", "english_name": "Acetaminophen", "aliases": ["Acetaminophen", "Paracetamol", "普拿疼", "Panadol"], "ingredients": ["ing_acetaminophen"], "classes": ["cls_analgesic"]}
   ],
   "rules": [
+    {"rule_id": "rule_warfarin_duplicate", "rule_int_id": 11, "rule_code": "WARFARIN_DUPLICATE_SAME_INGREDIENT", "rule_type": "THERAPEUTIC_DUPLICATE", "severity": "RED", "title": "Warfarin 重複用藥", "duplicate_group_class_id": "cls_warfarin", "severity_if_same_ingredient": "RED", "severity_if_same_class": "ORANGE", "watch_for": ["黑便或血便", "不明瘀青", "牙齦或鼻子出血"]},
     {"rule_id": "rule_anticoagulant_nsaid", "rule_int_id": 1, "rule_code": "ANTICOAGULANT_NSAID", "rule_type": "CLASS_PAIR", "severity": "RED", "title": "抗凝血藥與 NSAID 嚴重出血風險", "left_class_id": "cls_anticoagulant", "right_class_id": "cls_nsaid", "watch_for": ["黑便或血便", "吐血或咖啡色嘔吐物", "不明瘀青", "嚴重頭暈"]},
     {"rule_id": "rule_anticoagulant_antiplatelet", "rule_int_id": 2, "rule_code": "ANTICOAGULANT_ANTIPLATELET", "rule_type": "CLASS_PAIR", "severity": "RED", "title": "抗凝血藥 + 抗血小板藥", "left_class_id": "cls_anticoagulant", "right_class_id": "cls_antiplatelet", "watch_for": ["黑便或血便", "不明瘀青", "牙齦或鼻子出血"]},
     {"rule_id": "rule_digoxin_pgp", "rule_int_id": 3, "rule_code": "DIGOXIN_PGP_INHIBITOR", "rule_type": "INGREDIENT_AND_CLASS_PAIR", "severity": "ORANGE", "title": "Digoxin 與 P-gp 抑制劑需注意毒性", "left_ingredient_id": "ing_digoxin", "right_ingredient_id": "ing_amiodarone", "left_class_id": "cls_digoxin", "right_class_id": "cls_pgp_inhibitor", "watch_for": ["噁心或嘔吐", "視覺異常", "心跳過慢或心悸"]},

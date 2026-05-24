@@ -367,6 +367,21 @@ def insert_rules(
                     rule["severity"],
                 ),
             )
+        elif rule["rule_type"] == "THERAPEUTIC_DUPLICATE":
+            db.execute(
+                """
+                INSERT INTO therapeutic_duplicate_rules (
+                    rule_id, duplicate_group_class_id, severity_if_same_ingredient,
+                    severity_if_same_class
+                ) VALUES (?, ?, ?, ?);
+                """,
+                (
+                    rule["rule_id"],
+                    rule["duplicate_group_class_id"],
+                    rule["severity_if_same_ingredient"],
+                    rule["severity_if_same_class"],
+                ),
+            )
 
 
 def ingredient_rule_pairs(rule: dict[str, Any]) -> list[tuple[str, str]]:
