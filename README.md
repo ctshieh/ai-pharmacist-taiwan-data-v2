@@ -69,6 +69,8 @@ compatible_app_major_versions: [2]
 - 中西藥交互作用資訊網
 - 奇美藥劑部中西藥交互作用查詢系統
 
+授權與 API 評估紀錄：`docs/herb_western_data_access.md`
+
 ## 建置測試資料包
 
 ```bash
