@@ -1,0 +1,8 @@
+.DS_Store
+dist/
+*.tmp
+*.sqlite3
+*.sqlite3.gz
+*.db
+*.db.gz
+
